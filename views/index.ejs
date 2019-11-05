@@ -3,6 +3,25 @@
 <body>
     <%- include partials/navbar.ejs %>
 
-    <h1>Início</h1>
+    <div class="top">
+        <h1>Bem vindo ao forum GatoCurioso!</h1>
+        <a href="/perguntar"><button class="perguntar-index">Perguntar</button></a>
+    </div>
+
+
+    <div class="container">
+
+        <% perguntas.forEach(pergunta => { %>
+
+        <div>
+            <hr>
+            <h3 class="titiloPergunta"><%= pergunta.titulo %> </h3>
+            <button class="responder">Responder</button>
+        </div>
+
+        <% }) %>
+
+    </div>
+
 </body>
 <%- include partials/footer.ejs %>

@@ -1,4 +1,4 @@
-body{
+body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
 }
@@ -12,8 +12,7 @@ h1 {
     text-align: center;
 }
 
-input,
-textarea {
+input, textarea {
     width: 100%;
     padding: 2%;
     border-radius: 8px;
@@ -44,7 +43,7 @@ header {
     align-items: center;
 }
 
-ul{
+ul {
     align-items: center;
 }
 
@@ -52,7 +51,29 @@ li {
     list-style: none;
 }
 
-a{
+a {
     text-decoration: none;
     color: white;
+}
+
+.responder {
+    background-color: rgb(49, 49, 139);
+    margin: 0;
+    margin-left: 70%;
+}
+
+.responder:hover {
+    background-color: rgb(57, 57, 199);
+}
+
+.perguntar-index{
+    width: 400px;
+    height: 20px;
+    line-height: 2px;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.top{
+    text-align: center;
 }
