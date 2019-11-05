@@ -1,0 +1,58 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+}
+
+.container {
+    width: 50%;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 2%;
+    border-radius: 8px;
+    border: solid 1px rgb(175, 174, 174);
+}
+
+button {
+    margin-top: 5%;
+    width: 25%;
+    height: 30px;
+    padding: 1%;
+    border: none;
+    background-color: rgb(5, 136, 5);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(6, 94, 6);
+}
+
+header {
+    background-color: rgb(61, 61, 184);
+    height: 70px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+ul{
+    align-items: center;
+}
+
+li {
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
