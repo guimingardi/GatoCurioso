@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require("body-parser")
 const connection = require('./database/database')
 const pergunta = require("./database/pergunta")
+const Resposta = require("./database/Resposta")
 
 connection
     .authenticate()
@@ -25,9 +26,11 @@ app.use(bodyParser.json())
 app.get("/", (req, res) => {
 
     //raw ele faz uma pesquisa crua, só pega os dados
-    pergunta.findAll({raw: true, order:[
-        ['id','DESC']
-    ]}).then(perguntas => {
+    pergunta.findAll({
+        raw: true, order: [
+            ['id', 'DESC']
+        ]
+    }).then(perguntas => {
         console.log(perguntas)
         res.render("index", {
             perguntas: perguntas
@@ -57,16 +60,37 @@ app.post("/salvarpergunta", (req, res) => {
     })
 })
 
-app.get("/pergunta/:id", (req,res) => {
+app.get("/pergunta/:id", (req, res) => {
     let id = req.params.id;
     pergunta.findOne({
-        where: {id: id}
+        where: { id: id }
     }).then(pergunta => {
-        if(pergunta != undefined){ // pergunta encontrada 
+        if (pergunta != undefined) { // pergunta encontrada 
 
+            Resposta.findAll({
+                where: { perguntaId: pergunta.id },
+                order: [['id', 'DESC']]
+            }).then(respostas => {
+                res.render("pergunta", {
+                    pergunta: pergunta,
+                    respostas: respostas
+                })
+            })
         } else {
-
+            res.redirect("/")
         }
+    })
+})
+
+app.post("/responder", (req, res) => {
+    let corpo = req.body.corpo
+    let perguntaId = req.body.pergunta
+
+    Resposta.create({
+        corpo: corpo,
+        perguntaId: perguntaId
+    }).then(() => {
+        res.redirect("/pergunta/" + perguntaId)
     })
 })
 
